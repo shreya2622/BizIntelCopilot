@@ -6,7 +6,7 @@ chromadb==1.0.12
 sentence-transformers==3.4.1
 streamlit==1.45.1
 plotly==6.1.2
-pandas==2.2.3
+pandas==2.2.2
 PyYAML==6.0.2
 pypdf==5.5.0
 python-dotenv==1.1.0
