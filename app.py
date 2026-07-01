@@ -14,6 +14,12 @@ load_dotenv()
 from agent.sql_agent import run_sql_agent
 from charts.chart_builder import build_chart
 from rag.retriever import retrieve
+from data.generate_sample_data import generate as generate_db
+
+# Auto-generate DB if not present (needed for cloud deployments)
+_db_path = os.path.join(os.path.dirname(__file__), "superstore.db")
+if not os.path.exists(_db_path):
+    generate_db()
 
 # ── Page config ────────────────────────────────────────────────────────────────
 st.set_page_config(
@@ -241,7 +247,7 @@ if not st.session_state.messages:
         Get instant SQL, tables, and charts — no coding needed.</p>
     </div>
     <div class="stats-row">
-        <div class="stat-pill">9,994 orders</div>
+        <div class="stat-pill">5,000 orders</div>
         <div class="stat-pill">4 US regions</div>
         <div class="stat-pill">3 product categories</div>
         <div class="stat-pill">2014 – 2017</div>
