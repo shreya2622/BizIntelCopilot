@@ -1,0 +1,40 @@
+database: superstore
+description: >
+  Superstore retail sales dataset covering orders, customers, products,
+  shipping and profitability across US regions (2014-2017).
+
+tables:
+  orders:
+    description: >
+      Main fact table. Each row is one line item on a customer order.
+      Joins to no separate dimension tables — all attributes are denormalized here.
+    columns:
+      Row_ID:         {type: INTEGER, description: "Unique row identifier"}
+      Order_ID:       {type: VARCHAR, description: "Order identifier — multiple rows share the same Order_ID when an order has multiple products"}
+      Order_Date:     {type: DATE,    description: "Date the order was placed (YYYY-MM-DD)"}
+      Ship_Date:      {type: DATE,    description: "Date the order was shipped"}
+      Ship_Mode:      {type: VARCHAR, description: "Shipping class: Standard Class, Second Class, First Class, Same Day"}
+      Customer_ID:    {type: VARCHAR, description: "Unique customer identifier"}
+      Customer_Name:  {type: VARCHAR, description: "Full name of the customer"}
+      Segment:        {type: VARCHAR, description: "Customer segment: Consumer, Corporate, Home Office"}
+      Country:        {type: VARCHAR, description: "Country of the order (United States)"}
+      City:           {type: VARCHAR, description: "City of delivery"}
+      State:          {type: VARCHAR, description: "US state of delivery"}
+      Postal_Code:    {type: VARCHAR, description: "Zip code of delivery address"}
+      Region:         {type: VARCHAR, description: "US region: West, East, Central, South"}
+      Product_ID:     {type: VARCHAR, description: "Unique product identifier"}
+      Category:       {type: VARCHAR, description: "Product category: Furniture, Office Supplies, Technology"}
+      Sub_Category:   {type: VARCHAR, description: "Product sub-category, e.g. Chairs, Binders, Phones"}
+      Product_Name:   {type: VARCHAR, description: "Full product name"}
+      Sales:          {type: DOUBLE,  description: "Revenue from the line item in USD"}
+      Quantity:       {type: INTEGER, description: "Number of units ordered"}
+      Discount:       {type: DOUBLE,  description: "Fractional discount applied (0.0 = no discount, 0.2 = 20% off)"}
+      Profit:         {type: DOUBLE,  description: "Net profit for the line item in USD (can be negative)"}
+
+sample_questions:
+  - "What are total sales by region?"
+  - "Which product category is most profitable?"
+  - "Show me monthly revenue trends for 2017"
+  - "Who are the top 10 customers by sales?"
+  - "What is the average discount by segment?"
+  - "Which states have negative profit?"
